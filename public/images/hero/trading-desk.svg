@@ -7,8 +7,8 @@
       <stop offset="1" stop-color="#071015"/>
     </linearGradient>
     <linearGradient id="accent" x1="0" x2="1">
-      <stop stop-color="#00C2FF"/>
-      <stop offset="1" stop-color="#00FF94"/>
+      <stop stop-color="#F5C842"/>
+      <stop offset="1" stop-color="#E8944A"/>
     </linearGradient>
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="8" result="blur"/>
@@ -26,22 +26,22 @@
   <g transform="translate(170 160)">
     <rect width="560" height="330" rx="24" fill="url(#screen)" stroke="#1E6075"/>
     <path d="M45 248 C105 190 142 230 198 160 C255 88 328 175 392 112 C448 57 488 83 520 42" fill="none" stroke="url(#accent)" stroke-width="5" filter="url(#glow)"/>
-    <g stroke="#00FF94" stroke-width="3">
-      <path d="M92 92V190"/><rect x="76" y="122" width="32" height="48" fill="#00FF94" opacity=".8"/>
+    <g stroke="#F5C842" stroke-width="3">
+      <path d="M92 92V190"/><rect x="76" y="122" width="32" height="48" fill="#F5C842" opacity=".8"/>
       <path d="M155 112V238"/><rect x="139" y="144" width="32" height="60" fill="none"/>
-      <path d="M220 84V200"/><rect x="204" y="102" width="32" height="72" fill="#00FF94" opacity=".8"/>
+      <path d="M220 84V200"/><rect x="204" y="102" width="32" height="72" fill="#F5C842" opacity=".8"/>
       <path d="M286 132V265"/><rect x="270" y="160" width="32" height="70" fill="none"/>
-      <path d="M352 74V198"/><rect x="336" y="96" width="32" height="54" fill="#00FF94" opacity=".8"/>
+      <path d="M352 74V198"/><rect x="336" y="96" width="32" height="54" fill="#F5C842" opacity=".8"/>
       <path d="M420 72V225"/><rect x="404" y="112" width="32" height="78" fill="none"/>
     </g>
   </g>
   <g transform="translate(900 220)">
     <rect width="650" height="390" rx="26" fill="url(#screen)" stroke="#1E6075"/>
     <g fill="none" stroke-width="4">
-      <path d="M58 300 L122 234 L178 252 L246 170 L302 194 L382 102 L452 132 L585 62" stroke="#00C2FF" filter="url(#glow)"/>
-      <path d="M58 250 L138 270 L210 220 L288 246 L362 178 L450 198 L585 126" stroke="#00FF94" opacity=".75"/>
+      <path d="M58 300 L122 234 L178 252 L246 170 L302 194 L382 102 L452 132 L585 62" stroke="#F5C842" filter="url(#glow)"/>
+      <path d="M58 250 L138 270 L210 220 L288 246 L362 178 L450 198 L585 126" stroke="#E8944A" opacity=".75"/>
     </g>
-    <g fill="#00C2FF" opacity=".55">
+    <g fill="#F5C842" opacity=".55">
       <rect x="70" y="325" width="34" height="32" rx="4"/>
       <rect x="124" y="290" width="34" height="67" rx="4"/>
       <rect x="178" y="304" width="34" height="53" rx="4"/>
@@ -58,6 +58,6 @@
     <path d="M42 128 H660" stroke="#1E2433" stroke-width="14" stroke-linecap="round"/>
     <path d="M42 128 H430" stroke="url(#accent)" stroke-width="14" stroke-linecap="round" filter="url(#glow)"/>
     <path d="M42 178 H660" stroke="#1E2433" stroke-width="14" stroke-linecap="round"/>
-    <path d="M42 178 H548" stroke="#00C2FF" stroke-width="14" stroke-linecap="round"/>
+    <path d="M42 178 H548" stroke="#F5C842" stroke-width="14" stroke-linecap="round"/>
   </g>
 </svg>

@@ -15,25 +15,25 @@ export function Accordion({
   return (
     <div className="space-y-4">
       {items.map((item, index) => (
-        <div key={item.title} className="overflow-hidden rounded-lg border border-[var(--border)]">
+        <div key={item.title} className="overflow-hidden rounded-[10px] border border-[var(--border)] transition hover:border-[rgba(245,200,66,0.25)]">
           <button
             type="button"
-            className="flex w-full items-center justify-between gap-4 bg-[color:var(--bg-card)]/60 px-5 py-4 text-left"
+            className="flex w-full items-center justify-between gap-4 bg-[color:var(--bg-card)] px-6 py-5 text-left"
             onClick={() => setOpen(open === index ? -1 : index)}
             aria-expanded={open === index}
           >
             <span>
               {item.eyebrow ? (
-                <span className="mb-1 block font-mono text-xs text-[color:var(--accent-green)]">
+                <span className="mb-1 block font-mono text-xs uppercase tracking-[0.12em] text-[color:var(--accent)]">
                   {item.eyebrow}
                 </span>
               ) : null}
-              <span className="font-display text-xl font-bold text-[color:var(--text-primary)]">
+              <span className="font-serif text-xl font-bold text-[color:var(--text-primary)]">
                 {item.title}
               </span>
             </span>
             <ChevronDown
-              className={cn('shrink-0 transition-transform', open === index && 'rotate-180')}
+              className={cn('shrink-0 text-[color:var(--accent)] transition-transform', open === index && 'rotate-180')}
               size={20}
             />
           </button>
@@ -44,7 +44,7 @@ export function Accordion({
             )}
           >
             <div className="overflow-hidden">
-              <div className="border-t border-[var(--border)] p-5 text-[color:var(--text-secondary)]">
+              <div className="border-t border-[var(--border)] bg-[color:var(--bg-base)] p-6 text-[color:var(--text-secondary)]">
                 {item.content}
               </div>
             </div>

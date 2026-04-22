@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -31,10 +30,28 @@ import {
   testimonials,
 } from '@/constants/content';
 import { site } from '@/constants/site';
-import { applicationSchema, contactSchema, type ApplicationInput, type ContactInput } from '@/lib/utils/validators';
+import {
+  applicationSchema,
+  contactSchema,
+  type ApplicationInput,
+  type ContactInput,
+} from '@/lib/utils/validators';
 import { useApplicationForm } from '@/hooks/useApplicationForm';
 import { useCounterAnimation } from '@/hooks/useCounterAnimation';
-import { Accordion, Badge, Button, Card, Checkbox, GlowCard, Input, Section, SectionHeader, Select, StarRating, Textarea } from '@/components/ui';
+import {
+  Accordion,
+  Badge,
+  Button,
+  Card,
+  Checkbox,
+  GlowCard,
+  Input,
+  Section,
+  SectionHeader,
+  Select,
+  StarRating,
+  Textarea,
+} from '@/components/ui';
 
 const iconMap: Record<string, LucideIcon> = {
   Zap,
@@ -49,46 +66,78 @@ const iconMap: Record<string, LucideIcon> = {
 export function CounterStat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
   const counter = useCounterAnimation(value);
   return (
-    <div className="rounded-lg border border-[var(--border)] bg-[color:var(--bg-card)]/55 p-5 text-center">
-      <div className="font-mono text-4xl font-bold text-[color:var(--accent-green)]">
+    <div className="card px-5 py-5 text-center">
+      <div className="stat-value">
         <span ref={counter.ref}>{counter.value}</span>
         {suffix}
       </div>
-      <div className="mt-2 text-sm text-[color:var(--text-secondary)]">{label}</div>
+      <div className="stat-label">{label}</div>
     </div>
   );
 }
 
 export function HeroSection() {
   return (
-    <section className="market-hero relative min-h-[calc(100vh-76px)] overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,194,255,0.24),transparent_34%),radial-gradient(circle_at_70%_20%,rgba(0,255,148,0.16),transparent_24%)]" />
-      <div className="container relative flex min-h-[calc(100vh-76px)] flex-col justify-center pb-14 pt-16">
-        <div className="max-w-4xl">
-          <Badge>Cohort 4 - Starting May 11, 2025 | Only 10 Seats</Badge>
-          <h1 className="mt-7 max-w-4xl font-display text-5xl font-extrabold leading-[1.02] text-[color:var(--text-primary)] md:text-7xl">
-            Stop Guessing. Start Trading Like <span className="text-gradient">Institutions.</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[color:var(--text-secondary)] md:text-xl">
-            Learn the DMC (Dynamic Market Concept) framework - the same institutional approach
-            used by professional traders globally. 5-6 weeks of live mentorship, risk management,
-            psychology & funded trader pathway.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/apply">Apply Now</Button>
-            <Button href="/program" variant="secondary">
-              View Program
-            </Button>
+    <section className="hero-bg relative flex min-h-svh items-center overflow-hidden py-16">
+      <div className="container relative">
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_390px]">
+          <div className="max-w-4xl">
+            <Badge>Cohort 4 · May 11, 2025 · Only 10 Seats</Badge>
+            <h1 className="mt-8 max-w-4xl font-display text-[clamp(3.5rem,8vw,7.5rem)] font-black leading-[0.95] tracking-[-0.02em] text-[color:var(--text-primary)]">
+              Stop Guessing.
+              <br />
+              Start Trading Like{' '}
+              <span className="hero-underline text-gradient italic">Institutions.</span>
+            </h1>
+            <p className="mt-6 max-w-[560px] text-lg leading-[1.75] text-[color:var(--text-secondary)]">
+              A premium 5-6 week cohort built on the Dynamic Mentorship Concept™. Three phases.
+              Institutional framework. Lifelong community.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button href="/apply">Apply for This Cohort</Button>
+              <Button href="/program" variant="secondary">
+                Explore Program
+              </Button>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-4 font-mono text-sm text-[color:var(--text-muted)]">
+              <span>✦ Rs 25,000 one-time</span>
+              <span>✦ Only 10 seats</span>
+              <span>✦ Live + mentorship</span>
+            </div>
           </div>
-          <div className="mt-7 flex flex-wrap gap-3 text-sm text-[color:var(--text-secondary)]">
-            <span>Rs 25,000 one-time</span>
-            <span>|</span>
-            <span>Limited to 10 seats</span>
-            <span>|</span>
-            <span>Live classes + mentorship</span>
-          </div>
+
+          <GlowCard className="hidden animate-float lg:block">
+            <div className="flex items-center justify-between">
+              <Badge>DMC Setup</Badge>
+              <span className="font-mono text-xs text-[color:var(--text-muted)]">LONDON OPEN</span>
+            </div>
+            <div className="mt-8 space-y-4">
+              {[
+                ['Liquidity Sweep', 'Confirmed'],
+                ['Order Block', 'Active Zone'],
+                ['Risk Model', '1:3 RR'],
+              ].map(([label, value]) => (
+                <div key={label} className="flex items-center justify-between border-b border-[var(--border)] pb-3">
+                  <span className="text-[color:var(--text-secondary)]">{label}</span>
+                  <span className="font-mono text-sm text-[color:var(--accent)]">{value}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 h-28 rounded-lg border border-[var(--border)] bg-[linear-gradient(180deg,rgba(245,200,66,0.08),transparent)] p-4">
+              <div className="flex h-full items-end gap-3">
+                {[32, 58, 44, 76, 61, 92, 70].map((height, index) => (
+                  <span
+                    key={index}
+                    className="w-full rounded-t bg-brand-gradient opacity-85"
+                    style={{ height: `${height}%` }}
+                  />
+                ))}
+              </div>
+            </div>
+          </GlowCard>
         </div>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+        <div className="mt-16 grid max-w-3xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {metrics.map((metric) => (
             <CounterStat key={metric.label} {...metric} />
           ))}
@@ -101,14 +150,14 @@ export function HeroSection() {
 export function ProblemSection() {
   return (
     <Section>
-      <SectionHeader title="Why 90% of Traders Fail" />
+      <SectionHeader title="Why 95% of Retail Traders Fail in the Market" />
       <div className="grid gap-5 md:grid-cols-3">
         {problemCards.map((card) => {
           const Icon = iconMap[card.icon];
           return (
-            <Card key={card.title}>
-              <Icon className="text-red-400" size={30} />
-              <h3 className="mt-5 font-display text-2xl font-bold">{card.title}</h3>
+            <Card key={card.title} className="border-l-4 border-l-[color:var(--accent)]">
+              <Icon className="text-[color:var(--accent)]" size={30} />
+              <h3 className="mt-5 font-serif text-3xl font-bold">{card.title}</h3>
               <p className="mt-3 leading-7 text-[color:var(--text-secondary)]">{card.body}</p>
             </Card>
           );
@@ -117,6 +166,9 @@ export function ProblemSection() {
       <p className="mx-auto mt-10 max-w-3xl text-center text-xl leading-8 text-[color:var(--text-primary)]">
         Dynamic Trader Live exists to fix exactly this. The DMC Framework gives you the same
         structured edge institutions use.
+        <span className="mt-4 block font-mono text-sm uppercase tracking-[0.12em] text-[color:var(--accent)]">
+          There's a Better Way ↓
+        </span>
       </p>
     </Section>
   );
@@ -124,7 +176,7 @@ export function ProblemSection() {
 
 export function DMCFrameworkSection() {
   return (
-    <Section className="bg-[color:var(--bg-secondary)]">
+    <Section className="bg-[color:var(--bg-surface)]">
       <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
           <SectionHeader
@@ -140,15 +192,15 @@ export function DMCFrameworkSection() {
             {dmcPillars.map(([icon, title, body], index) => {
               const Icon = iconMap[icon];
               return (
-                <div key={title} className="flex gap-4 rounded-lg bg-[color:var(--bg-primary)]/45 p-4">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-brand-gradient text-slate-950">
+                <div key={title} className="flex gap-4 rounded-lg bg-[color:var(--bg-surface)] p-4">
+                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-brand-gradient text-[#0B0A08]">
                     <Icon size={20} />
                   </div>
                   <div>
                     <div className="font-mono text-xs text-[color:var(--text-muted)]">
                       Pillar {index + 1}
                     </div>
-                    <h3 className="font-display text-xl font-bold">{title}</h3>
+                    <h3 className="font-serif text-2xl font-bold">{title}</h3>
                     <p className="text-[color:var(--text-secondary)]">{body}</p>
                   </div>
                 </div>
@@ -165,19 +217,19 @@ export function RoadmapTimeline({ compact = false }: { compact?: boolean }) {
   return (
     <div className="grid gap-5 lg:grid-cols-5">
       {roadmapStages.map((stage, index) => (
-        <Card key={stage.title} className="border-l-4 border-l-[color:var(--accent-blue)]">
+        <Card key={stage.title} className="border-l-4 border-l-[color:var(--accent)]">
           <div className="font-mono text-5xl font-bold text-[color:var(--text-muted)]">
             {String(index + 1).padStart(2, '0')}
           </div>
           <Badge className="mt-4">{stage.week}</Badge>
-          <h3 className="mt-4 font-display text-2xl font-bold">{stage.title}</h3>
+          <h3 className="mt-4 font-serif text-3xl font-bold">{stage.title}</h3>
           {!compact ? (
             <p className="mt-2 text-sm italic text-[color:var(--text-secondary)]">"{stage.quote}"</p>
           ) : null}
           <ul className="mt-4 space-y-2 text-sm text-[color:var(--text-secondary)]">
             {stage.bullets.map((bullet) => (
               <li key={bullet} className="flex gap-2">
-                <Check size={16} className="mt-0.5 shrink-0 text-[color:var(--accent-green)]" />
+                <Check size={16} className="mt-0.5 shrink-0 text-[color:var(--accent)]" />
                 {bullet}
               </li>
             ))}
@@ -206,7 +258,7 @@ export function RoadmapPreviewSection() {
 
 export function MetricsStripSection() {
   return (
-    <section className="bg-[color:var(--bg-secondary)] py-10">
+    <section className="bg-[color:var(--bg-surface)] py-10">
       <div className="container grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {[
           ['₹25,000', 'One-Time'],
@@ -250,11 +302,11 @@ export function CohortDetailsSection() {
           </Button>
         </GlowCard>
         <Card>
-          <h3 className="font-display text-2xl font-bold">What You Get</h3>
+          <h3 className="font-serif text-3xl font-bold">What You Get</h3>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {includedItems.slice(0, 8).map((item) => (
               <div key={item} className="flex gap-3 text-[color:var(--text-secondary)]">
-                <Check size={18} className="mt-1 shrink-0 text-[color:var(--accent-green)]" />
+                <Check size={18} className="mt-1 shrink-0 text-[color:var(--accent)]" />
                 {item}
               </div>
             ))}
@@ -268,16 +320,16 @@ export function CohortDetailsSection() {
 export function TestimonialsSection({ full = false }: { full?: boolean }) {
   const list = full ? testimonials : testimonials.slice(0, 4);
   return (
-    <Section className={full ? '' : 'bg-[color:var(--bg-secondary)]'}>
+    <Section className={full ? '' : 'bg-[color:var(--bg-surface)]'}>
       <SectionHeader title={full ? 'Real Results. Real Traders.' : 'What Our Traders Say'} />
-      <div className={full ? 'grid gap-5 md:grid-cols-2 lg:grid-cols-3' : 'overflow-hidden'}>
-        <div className={full ? 'contents' : 'flex w-max animate-marquee gap-5 hover:[animation-play-state:paused]'}>
+      <div className={full ? 'grid gap-5 md:grid-cols-2 lg:grid-cols-3' : 'marquee-wrapper'}>
+        <div className={full ? 'contents' : 'marquee-track'}>
           {[...list, ...(!full ? list : [])].map((item, index) => (
             <Card key={`${item.name}-${index}`} className={full ? '' : 'w-[320px] md:w-[420px]'}>
               <StarRating />
               <p className="mt-4 italic leading-7 text-[color:var(--text-secondary)]">"{item.quote}"</p>
               <div className="mt-6 flex items-center gap-3">
-                <div className="grid h-12 w-12 place-items-center rounded-full bg-brand-gradient font-mono font-bold text-slate-950">
+                <div className="grid h-12 w-12 place-items-center rounded-full bg-brand-gradient font-mono font-bold text-[#0B0A08]">
                   {item.name
                     .split(' ')
                     .map((part) => part[0])
@@ -309,7 +361,7 @@ export function FinalCTASection() {
   return (
     <Section>
       <GlowCard className="mx-auto max-w-4xl text-center">
-        <h2 className="font-display text-4xl font-extrabold md:text-5xl">
+        <h2 className="font-serif text-4xl font-bold md:text-5xl">
           Limited Seats. Real Results. No Guesswork.
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-[color:var(--text-secondary)]">
@@ -338,7 +390,7 @@ export function ProgramSections() {
       <ul className="grid gap-3">
         {module.topics.map((topic) => (
           <li key={topic} className="flex gap-3">
-            <Check size={18} className="mt-1 shrink-0 text-[color:var(--accent-green)]" />
+            <Check size={18} className="mt-1 shrink-0 text-[color:var(--accent)]" />
             {topic}
           </li>
         ))}
@@ -369,12 +421,12 @@ export function ProgramSections() {
         <SectionHeader title="Curriculum & Modules" subtitle="Six modules, live execution, and review loops built for serious traders." />
         <Accordion items={accordionItems} />
       </Section>
-      <Section className="bg-[color:var(--bg-secondary)]">
+      <Section className="bg-[color:var(--bg-surface)]">
         <SectionHeader title="What's Included" />
         <div className="grid gap-4 md:grid-cols-3">
           {includedItems.map((item) => (
             <Card key={item} className="flex gap-3">
-              <Check size={18} className="mt-1 shrink-0 text-[color:var(--accent-green)]" />
+              <Check size={18} className="mt-1 shrink-0 text-[color:var(--accent)]" />
               <span className="text-[color:var(--text-secondary)]">{item}</span>
             </Card>
           ))}
@@ -390,11 +442,11 @@ export function ProgramSections() {
           ))}
         </div>
       </Section>
-      <Section id="pricing" className="bg-[color:var(--bg-secondary)]">
+      <Section id="pricing" className="bg-[color:var(--bg-surface)]">
         <div className="grid gap-6 lg:grid-cols-2">
           <Card>
-            <CalendarDays className="text-[color:var(--accent-blue)]" />
-            <h2 className="mt-4 font-display text-3xl font-bold">Cohort 4 Schedule</h2>
+            <CalendarDays className="text-[color:var(--accent)]" />
+            <h2 className="mt-4 font-serif text-4xl font-bold">Cohort 4 Schedule</h2>
             <div className="mt-6 grid gap-3 text-[color:var(--text-secondary)]">
               <p>Start Date: May 11, 2025</p>
               <p>End Date: ~June 20, 2025</p>
@@ -439,7 +491,7 @@ export function ResultsSections() {
           Don't take our word for it - hear from the traders who've gone through the DMC program.
         </p>
       </Section>
-      <section className="bg-[color:var(--bg-secondary)] py-10">
+      <section className="bg-[color:var(--bg-surface)] py-10">
         <div className="container grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {metrics.map((metric) => (
             <CounterStat key={metric.label} {...metric} />
@@ -447,7 +499,7 @@ export function ResultsSections() {
         </div>
       </section>
       <TestimonialsSection full />
-      <Section className="bg-[color:var(--bg-secondary)]">
+      <Section className="bg-[color:var(--bg-surface)]">
         <SectionHeader title="The Transformation" />
         <div className="grid gap-5 md:grid-cols-3">
           {[
@@ -457,7 +509,7 @@ export function ResultsSections() {
           ].map(([before, after]) => (
             <Card key={before}>
               <p className="text-red-300">Before: {before}</p>
-              <p className="mt-4 text-[color:var(--accent-green)]">After: {after}</p>
+              <p className="mt-4 text-[color:var(--accent)]">After: {after}</p>
             </Card>
           ))}
         </div>
@@ -497,7 +549,7 @@ export function ResourcesSections() {
           ))}
         </div>
       </Section>
-      <Section id="downloads" className="bg-[color:var(--bg-secondary)]">
+      <Section id="downloads" className="bg-[color:var(--bg-surface)]">
         <SectionHeader title="Free Guides / Downloads" />
         <div className="grid gap-5 md:grid-cols-3">
           {[
@@ -506,7 +558,7 @@ export function ResourcesSections() {
             ['Prop Firm Challenge Checklist', 'Everything you need to pass your first funded trader evaluation', '/downloads/prop-firm-checklist.pdf'],
           ].map(([title, body, href]) => (
             <Card key={title}>
-              <Download className="text-[color:var(--accent-green)]" />
+              <Download className="text-[color:var(--accent)]" />
               <h3 className="mt-4 font-display text-2xl font-bold">{title}</h3>
               <p className="mt-3 text-[color:var(--text-secondary)]">{body}</p>
               <Button href={href} className="mt-5">Download Free</Button>
@@ -516,8 +568,8 @@ export function ResourcesSections() {
       </Section>
       <Section id="telegram">
         <GlowCard className="mx-auto max-w-4xl text-center">
-          <MessageCircle className="mx-auto text-[color:var(--accent-green)]" size={42} />
-          <h2 className="mt-4 font-display text-4xl font-extrabold">Join Our Free Telegram Community</h2>
+          <MessageCircle className="mx-auto text-[color:var(--accent)]" size={42} />
+          <h2 className="mt-4 font-serif text-5xl font-bold">Join Our Free Telegram Community</h2>
           <p className="mt-4 text-[color:var(--text-secondary)]">
             Get daily market analysis, trade ideas, live setups, and community support - free. 10,000+ traders already inside.
           </p>
@@ -541,13 +593,13 @@ export function ApplyPageSections() {
           <ApplicationForm />
         </div>
         <GlowCard className="h-fit lg:sticky lg:top-28">
-          <Users className="text-[color:var(--accent-green)]" />
-          <h2 className="mt-4 font-display text-2xl font-bold">Cohort 4 closes when 10 seats fill.</h2>
+          <Users className="text-[color:var(--accent)]" />
+          <h2 className="mt-4 font-serif text-3xl font-bold">Cohort 4 closes when 10 seats fill.</h2>
           <p className="mt-3 text-[color:var(--text-secondary)]">Currently: 7 of 10 seats taken.</p>
           <div className="mt-6 grid gap-3 text-[color:var(--text-secondary)]">
             {['No hidden fees', 'Razorpay secure payment', 'Free discovery call before enrollment', 'Course starts May 11, 2025'].map((item) => (
               <div key={item} className="flex gap-2">
-                <Check size={18} className="text-[color:var(--accent-green)]" /> {item}
+                <Check size={18} className="text-[color:var(--accent)]" /> {item}
               </div>
             ))}
           </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
@@ -27,13 +28,15 @@ export function Navbar() {
     <header
       className={cn(
         'sticky top-0 z-50 border-b border-transparent transition-all duration-300',
-        scrolled &&
-          'border-[var(--border)] bg-[color:var(--bg-primary)]/78 py-0 shadow-2xl backdrop-blur-2xl',
+        scrolled && 'border-[var(--border)] bg-[rgba(11,10,8,0.90)] py-0 shadow-2xl backdrop-blur-xl',
       )}
     >
       <nav className="container flex items-center justify-between py-4">
-        <Link href="/" className="font-display text-xl font-extrabold tracking-normal">
-          Dynamic Trader <span className="text-gradient">Live</span>
+        <Link href="/" className="flex items-center gap-3">
+          <Image src="/images/logo/dtl-logo-mark.svg" alt="DTL" width={36} height={36} priority />
+          <span className="font-display text-xl font-bold tracking-normal text-[color:var(--text-primary)]">
+            Dynamic Trader <span className="text-[color:var(--accent)]">Live</span>
+          </span>
         </Link>
 
         <div className="hidden items-center gap-7 lg:flex">
@@ -43,14 +46,14 @@ export function Navbar() {
                 href={link.href}
                 className={cn(
                   'flex items-center gap-1 text-sm font-semibold text-[color:var(--text-secondary)] transition hover:text-[color:var(--text-primary)]',
-                  pathname === link.href && 'text-[color:var(--text-primary)]',
+                  pathname === link.href && 'text-[color:var(--text-primary)] after:mt-1 after:block after:h-0.5 after:rounded after:bg-brand-gradient',
                 )}
               >
                 {link.label}
                 {link.items ? <ChevronDown size={14} /> : null}
               </Link>
               {link.items ? (
-                <div className="invisible absolute left-0 top-8 w-64 translate-y-2 rounded-lg border border-[var(--border)] bg-[color:var(--bg-secondary)] p-2 opacity-0 shadow-2xl transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="invisible absolute left-0 top-8 w-64 translate-y-2 rounded-lg border border-[var(--border)] bg-[color:var(--bg-surface)] p-2 opacity-0 shadow-2xl transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                   {link.items.map((item) => (
                     <Link
                       key={item.href}
@@ -88,14 +91,17 @@ export function Navbar() {
 
       <div
         className={cn(
-          'fixed inset-0 z-50 bg-[color:var(--bg-primary)] transition-transform duration-300 lg:hidden',
+          'fixed inset-0 z-50 bg-[color:var(--bg-base)] transition-transform duration-300 lg:hidden',
           open ? 'translate-x-0' : '-translate-x-full',
         )}
       >
         <div className="container flex h-full flex-col py-5">
           <div className="flex items-center justify-between">
-            <Link href="/" className="font-display text-xl font-extrabold">
-              Dynamic Trader <span className="text-gradient">Live</span>
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/images/logo/dtl-logo-mark.svg" alt="DTL" width={36} height={36} priority />
+              <span className="font-display text-xl font-bold">
+                Dynamic Trader <span className="text-[color:var(--accent)]">Live</span>
+              </span>
             </Link>
             <button
               type="button"

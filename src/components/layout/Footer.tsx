@@ -36,11 +36,11 @@ const groups = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--border)] bg-[color:var(--bg-secondary)]">
+    <footer className="border-t border-[var(--border)] bg-[color:var(--bg-surface)]">
       <div className="container grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr]">
         <div>
-          <Link href="/" className="font-display text-2xl font-extrabold">
-            Dynamic Trader <span className="text-gradient">Live</span>
+          <Link href="/" className="font-display text-2xl font-bold">
+            Dynamic Trader <span className="text-[color:var(--accent)]">Live</span>
           </Link>
           <p className="mt-4 max-w-sm text-[color:var(--text-secondary)]">
             India's most structured trading education cohort. Built for serious traders. Powered
@@ -68,7 +68,7 @@ export function Footer() {
                 <Link
                   key={href}
                   href={href}
-                  className="text-sm text-[color:var(--text-secondary)] hover:text-[color:var(--accent-green)]"
+                  className="text-sm text-[color:var(--text-secondary)] transition hover:text-[color:var(--accent)]"
                 >
                   {label}
                 </Link>

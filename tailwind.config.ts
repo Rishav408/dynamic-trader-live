@@ -2,49 +2,57 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   darkMode: ['class'],
-  content: ['./src/**/*.{ts,tsx}', './public/**/*.html'],
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
         brand: {
-          blue: '#00C2FF',
-          green: '#00FF94',
-          dark: '#0A0A0F',
-          card: '#141720',
-          border: '#1E2433',
+          amber: '#F5C842',
+          orange: '#E8944A',
+          base: '#0B0A08',
+          surface: '#121008',
+          card: '#1A1712',
+          border: '#2E2820',
         },
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Syne', 'sans-serif'],
-        body: ['var(--font-body)', 'DM Sans', 'sans-serif'],
-        mono: ['var(--font-mono)', 'Space Mono', 'monospace'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
       },
       backgroundImage: {
-        'brand-gradient': 'linear-gradient(135deg, #00C2FF 0%, #00FF94 100%)',
+        'brand-gradient': 'linear-gradient(135deg, #F5C842 0%, #E8944A 100%)',
+        'hero-glow':
+          'radial-gradient(ellipse 70% 55% at 28% 45%, rgba(245,200,66,0.20) 0%, rgba(232,148,74,0.12) 30%, transparent 65%)',
       },
       boxShadow: {
-        'glow-blue': '0 0 20px rgba(0, 194, 255, 0.35)',
-        'glow-green': '0 0 20px rgba(0, 255, 148, 0.35)',
+        amber: '0 0 32px rgba(245, 200, 66, 0.28)',
+        'amber-sm': '0 0 14px rgba(245, 200, 66, 0.18)',
       },
       keyframes: {
         float: {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0)' },
-          '50%': { transform: 'translate3d(0, -18px, 0)' },
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-14px)' },
         },
         pulseCta: {
           '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.03)' },
+          '50%': { transform: 'scale(1.025)' },
         },
         marquee: {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-50%)' },
         },
+        shimmer: {
+          from: { backgroundPosition: '200% 0' },
+          to: { backgroundPosition: '-200% 0' },
+        },
       },
       animation: {
-        float: 'float 9s ease-in-out infinite',
-        'float-slow': 'float 12s ease-in-out infinite',
-        'pulse-cta': 'pulseCta 4s ease-in-out infinite',
-        marquee: 'marquee 28s linear infinite',
+        float: 'float 10s ease-in-out infinite',
+        'pulse-cta': 'pulseCta 5s ease-in-out infinite',
+        marquee: 'marquee 30s linear infinite',
+        shimmer: 'shimmer 3s linear infinite',
       },
     },
   },

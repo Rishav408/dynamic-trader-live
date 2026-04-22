@@ -11,7 +11,7 @@ export function Card({
   return (
     <div
       className={cn(
-        'glass-card rounded-lg border border-white/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--accent-blue)]/50',
+        'card',
         className,
       )}
     >
@@ -30,7 +30,7 @@ export function GlowCard({
   return (
     <Card
       className={cn(
-        'relative overflow-hidden shadow-glow-blue before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-brand-gradient',
+        'card-glow',
         className,
       )}
     >

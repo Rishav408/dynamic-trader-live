@@ -28,7 +28,7 @@ export default function AboutPage() {
             [Award, 'Small Cohort Quality', 'Ten seats per cohort keeps mentoring personal, direct, and accountable.'],
           ].map(([Icon, title, body]) => (
             <Card key={String(title)}>
-              <Icon className="text-[color:var(--accent-green)]" />
+              <Icon className="text-[color:var(--accent)]" />
               <h2 className="mt-4 font-display text-2xl font-bold">{String(title)}</h2>
               <p className="mt-3 text-[color:var(--text-secondary)]">{String(body)}</p>
             </Card>

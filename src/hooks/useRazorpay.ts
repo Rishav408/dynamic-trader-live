@@ -28,7 +28,7 @@ export function useRazorpay() {
           body: JSON.stringify({ ...response, applicationId }),
         });
       },
-      theme: { color: '#00C2FF' },
+      theme: { color: '#F5C842' },
     });
 
     razorpay.open();

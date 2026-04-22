@@ -12,7 +12,7 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={cn('section-band py-20 md:py-28', className)}>
+    <section id={id} className={cn('section-band relative overflow-hidden', className)}>
       <div className="container">{children}</div>
     </section>
   );
@@ -32,7 +32,7 @@ export function SectionHeader({
   return (
     <div className={cn('mb-12 max-w-3xl', align === 'center' && 'mx-auto text-center')}>
       {eyebrow ? <Badge className="mb-4">{eyebrow}</Badge> : null}
-      <h2 className="font-display text-3xl font-extrabold text-[color:var(--text-primary)] md:text-5xl">
+      <h2 className="font-serif text-4xl font-bold text-[color:var(--text-primary)] md:text-5xl">
         {title}
       </h2>
       {subtitle ? (
