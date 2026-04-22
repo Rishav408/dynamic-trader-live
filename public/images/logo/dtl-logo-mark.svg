@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" aria-label="Dynamic Trader Live mark">
+  <rect width="96" height="96" rx="18" fill="#0A0A0F"/>
+  <path d="M22 62L39 45L51 56L74 30" fill="none" stroke="#00C2FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 70H74" stroke="#00FF94" stroke-width="8" stroke-linecap="round"/>
+</svg>
